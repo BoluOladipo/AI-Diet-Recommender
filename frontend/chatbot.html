@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Chatbot Assistant</title>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="chatbot.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ff7a00, #000);
+      color: white;
+      padding: 20px;
+    }
+    .chat-box {
+      max-width: 700px;
+      margin: auto;
+      background: rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 20px;
+      height: 80vh;
+      overflow-y: auto;
+    }
+    .msg {
+      margin: 10px 0;
+      padding: 10px 15px;
+      border-radius: 15px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .user { background: #ff7a00; text-align: right; }
+    .bot { background: #333; text-align: left; }
+    .input-area {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 10px;
+      background: #ff7a00;
+      color: white;
+      margin-left: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background: #ffa733; }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div id="chatWidget">
+  <div id="chatWindow"></div>
+  <form id="chatForm">
+    <input id="chatInput" type="text" placeholder="Ask me anything..." />
+    <button type="submit">Send</button>
+  </form>
+</div>
+
+<script src="chatbot.js"></script>
+</body>
+</html>
