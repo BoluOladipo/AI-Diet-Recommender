@@ -1,38 +1,45 @@
-// backend/routes/chatbotRoutes.js
 const express = require("express");
+const axios = require("axios");
 const router = express.Router();
-const OpenAI = require("openai");
-require("dotenv").config();
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
 
-// POST /api/chat
+const OPENAI_API_KEY = "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";
+
 router.post("/", async (req, res) => {
   try {
-    const { message, history } = req.body;
+    const { message, history = [] } = req.body;
+    if (!message) return res.status(400).json({ reply: "Please enter a message." });
 
     const messages = [
-      { role: "system", content: "You are a smart and friendly AI assistant that can talk about anything, not just food. Be clear, helpful, and engaging." },
-      ...(history || []),
-      { role: "user", content: message },
+      {
+        role: "system",
+        content: "You are an intelligent and conversational AI assistant capable of discussing any topic with reasoning, accuracy, and empathy. Provide helpful and context-aware responses."
+      },
+      ...history,
+      { role: "user", content: message }
     ];
 
-    const completion = await openai.chat.completions.create({
-      model: "gpt-3.5-turbo",
-      messages,
-      max_tokens: 500,
-      temperature: 0.8,
-    });
+    const response = await axios.post(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        model: "gpt-4o-mini", // reliable & cheaper alternative
+        messages,
+        temperature: 0.9
+      },
+      {
+        headers: {
+          "Authorization": `Bearer ${OPENAI_API_KEY}`,
+          "Content-Type": "application/json"
+        }
+      }
+    );
 
-    const reply = completion.choices[0].message.content;
+    const reply = response.data.choices?.[0]?.message?.content || "Hmm... I didn’t catch that.";
     res.json({ reply });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Chatbot failed to respond" });
+    console.error("Chatbot Error:", error.response?.data || error.message);
+    res.status(500).json({ reply: "Sorry, I couldn’t process that at the moment. Please try again." });
   }
 });
 
 module.exports = router;
-
