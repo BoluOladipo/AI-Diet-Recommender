@@ -16,7 +16,7 @@ const BASE_URL = "https://ai-diet-recommender-1hsu.onrender.com";
 
 async function loadConditions(){
   try {
-    const res = await fetch(`${BASE_URL}/api/diet/conditions`);     
+    const res = await fetch("https://ai-diet-recommender-1hsu.onrender.com/api/diet/conditions");    
     const data = await res.json();
     if (data?.conditions) {
       conditionSelect.innerHTML = `<option value="">-- choose or type symptoms --</option>` +
@@ -87,11 +87,11 @@ async function generate(){
 
   showLoading(true);
   try {
-    const res = await fetch(`${BASE_URL}/api/diet/recommend`, { 
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify({ symptomsText: symptoms, conditionCode, preferences: {}, allergies, days })
-    });
+    const res = await fetch("https://ai-diet-recommender-1hsu.onrender.com/api/diet/recommend", {
+  method: "POST",
+  headers: {"Content-Type":"application/json"},
+  body: JSON.stringify({ symptomsText: symptoms, conditionCode, preferences: {}, allergies, days })
+});
     const data = await res.json();
     if (data.status === "ok") {
       renderPlan(data.plan, data.condition);
