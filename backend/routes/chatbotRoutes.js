@@ -3,7 +3,7 @@ const axios = require("axios");
 const router = express.Router();
 
 
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
 router.post("/", async (req, res) => {
   try {
