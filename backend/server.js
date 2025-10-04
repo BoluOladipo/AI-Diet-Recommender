@@ -1,11 +1,12 @@
 const express = require("express");
 const path = require("path");
-const fs = require("fs");
 const dotenv = require("dotenv");
 const cors = require("cors");
+
 dotenv.config();
 
 const dietRoutes = require("./routes/dietRoutes");
+const chatbotRoutes = require("./routes/chatbotRoutes");
 
 const app = express();
 
@@ -17,11 +18,11 @@ app.use(cors({
 
 app.use(express.json());
 
-
-// serve api routes
+// API routes
 app.use("/api/diet", dietRoutes);
+app.use("/api/chat", chatbotRoutes);
 
-// serve frontend static files
+// Serve frontend
 const frontendPath = path.join(__dirname, "..", "frontend");
 app.use(express.static(frontendPath));
 
@@ -30,6 +31,4 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`✅ Server running at http://localhost:${PORT}`));
