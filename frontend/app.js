@@ -12,7 +12,7 @@ const downloadPdfBtn = document.getElementById("downloadPdf");
 let latestPlan = null;
 let latestCondition = null;
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://ai-diet-recommender-1hsu.onrender.com";
 
 async function loadConditions(){
   try {
