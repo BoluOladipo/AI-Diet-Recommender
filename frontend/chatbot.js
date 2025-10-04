@@ -25,7 +25,7 @@ chatForm.addEventListener("submit", async (e) => {
 
   // Send to backend
   try {
-    const res = await fetch("/api/chat", {
+    const res = await fetch("https://ai-diet-recommender-1hsu.onrender.com/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ message: userMsg, history: chatHistory })
@@ -51,3 +51,4 @@ chatForm.addEventListener("submit", async (e) => {
     chatWindow.appendChild(errorBubble);
   }
 });
+
