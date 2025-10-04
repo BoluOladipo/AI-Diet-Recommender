@@ -72,8 +72,7 @@ input:focus, select:focus{box-shadow:0 6px 18px rgba(11,110,79,0.08);transform:t
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 1339px;
-  height: 500px;;
+  width: 300px;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
