@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>AI Nutrition Advisor (Local)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <!-- jsPDF for PDF export -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <h1>AI Nutrition Advisor</h1>
+      <p>Upload your symptoms or select a condition — get safe, localized meal suggestions.</p>
+    </header>
+
+    <main class="card">
+      <div class="form-grid">
+        <label>Enter symptoms or condition (free text):</label>
+        <input id="symptoms" placeholder="e.g. I feel bloated after beans, I have high blood pressure" />
+
+        <label>Select a condition (optional):</label>
+        <select id="conditionSelect"><option value="">-- choose or type symptoms --</option></select>
+
+        <label>Allergies / Excluded ingredients (comma separated):</label>
+        <input id="allergies" placeholder="e.g. peanut, milk" />
+
+        <label>Days (1 or 7):</label>
+        <select id="days"><option value="1">1 day</option><option value="7">7 days</option></select>
+
+        <button id="generateBtn" class="btn">Generate Meal Plan</button>
+      </div>
+
+      <div id="loading" class="loading hidden">Generating plan…</div>
+      <div id="resultArea" class="results"></div>
+      <div id="actions" class="actions hidden">
+        <button id="downloadPdf" class="btn secondary">Download Plan (PDF)</button>
+      </div>
+    </main>
+
+    <footer class="foot">Made by BOLU OLADIPO — Food & Health AI </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

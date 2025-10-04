@@ -1,0 +1,80 @@
+[
+  {
+    "code": "GENERAL",
+    "name": "General / No specific condition",
+    "bannedIngredients": [],
+    "nutrientConstraints": {}
+  },
+  {
+    "code": "DIABETES",
+    "name": "Diabetes (Type 2)",
+    "bannedIngredients": ["added sugar", "soda", "sweets", "honey"],
+    "nutrientConstraints": { "sugarMax": 25, "caloriesMax": 800 }
+  },
+  {
+    "code": "HYPERTENSION",
+    "name": "High Blood Pressure (Hypertension)",
+    "bannedIngredients": ["excess salt", "processed meats"],
+    "nutrientConstraints": { "sodiumMax": 500, "caloriesMax": 900 }
+  },
+  {
+    "code": "ULCER",
+    "name": "Peptic Ulcer / Gastric Sensitivity",
+    "bannedIngredients": ["pepper", "chili", "spicy", "vinegar", "alcohol", "coffee"],
+    "nutrientConstraints": {}
+  },
+  {
+    "code": "CELIAC",
+    "name": "Celiac Disease (Gluten Intolerance)",
+    "bannedIngredients": ["wheat", "bread", "gluten"],
+    "nutrientConstraints": {}
+  },
+  {
+    "code": "LACTOSE",
+    "name": "Lactose Intolerance",
+    "bannedIngredients": ["milk", "cheese", "butter", "yogurt"],
+    "nutrientConstraints": {}
+  },
+  {
+    "code": "KIDNEY",
+    "name": "Chronic Kidney Disease (CKD) - general constraints",
+    "bannedIngredients": ["high potassium foods (banana, yam) in excess"],
+    "nutrientConstraints": { "sodiumMax": 400, "caloriesMax": 900 }
+  },
+  {
+    "code": "GOUT",
+    "name": "Gout",
+    "bannedIngredients": ["red meat", "organ meat", "anchovies"],
+    "nutrientConstraints": {}
+  },
+  {
+    "code": "OBESITY",
+    "name": "Obesity / Weight Management",
+    "bannedIngredients": ["fried", "sugary drinks", "high fat"],
+    "nutrientConstraints": { "caloriesMax": 700 }
+  },
+  {
+    "code": "IBS",
+    "name": "Irritable Bowel Syndrome (IBS)",
+    "bannedIngredients": ["beans (if triggers bloating)", "gas-producing foods"],
+    "nutrientConstraints": {}
+  },
+  {
+    "code": "ANEMIA",
+    "name": "Anemia",
+    "bannedIngredients": [],
+    "nutrientConstraints": {}
+  },
+  {
+    "code": "PREGNANCY",
+    "name": "Pregnancy",
+    "bannedIngredients": ["alcohol", "raw fish"],
+    "nutrientConstraints": {}
+  },
+  {
+    "code": "GERD",
+    "name": "Acid Reflux / GERD",
+    "bannedIngredients": ["spicy", "fatty", "acidic (tomato) in excess"],
+    "nutrientConstraints": {}
+  }
+]

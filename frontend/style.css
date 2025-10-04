@@ -1,0 +1,69 @@
+/* frontend/style.css */
+:root{
+  --accent:#0b6e4f;
+  --muted:#6b7280;
+  --card:#ffffff;
+  --bg:#f4fbf8;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, #e9fff3 0%, var(--bg) 100%);
+  color:#0f172a;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:30px 15px;
+  min-height:100vh;
+}
+.app{
+  width:100%;
+  max-width:980px;
+}
+.hero{
+  text-align:center;
+  margin-bottom:18px;
+}
+.hero h1{margin:0;font-size:28px;color:var(--accent)}
+.hero p{margin:6px 0 0;color:var(--muted)}
+
+.card{
+  background:var(--card);
+  border-radius:14px;
+  padding:20px;
+  box-shadow:0 10px 30px rgba(3, 60, 43, 0.08);
+  transition:transform .3s ease;
+}
+
+/* grid form */
+.form-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:12px}
+input, select{
+  padding:10px 12px;border-radius:10px;border:1px solid #e6eef0;outline:none;
+  transition:box-shadow .15s ease, transform .15s ease;
+}
+input:focus, select:focus{box-shadow:0 6px 18px rgba(11,110,79,0.08);transform:translateY(-2px)}
+
+.btn{background:var(--accent);color:#fff;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;min-height:44px}
+.btn:hover{filter:brightness(.95);transform:translateY(-2px)}
+.btn.secondary{background:#fff;color:var(--accent);border:1px solid var(--accent)}
+
+.loading{margin-top:12px;padding:12px;border-radius:10px;background:#f7fdf8;color:var(--accent);text-align:center; font-weight:600}
+.hidden{display:none}
+
+/* results */
+.results{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+.day-card{background:linear-gradient(180deg,#fff,#fbfffc);padding:12px;border-radius:10px;border:1px solid #eef7f1;box-shadow:0 6px 18px rgba(11,110,79,0.03);transform:translateY(12px);opacity:0;transition:all .45s cubic-bezier(.2,.9,.3,1)}
+.day-card.show{transform:translateY(0);opacity:1}
+.meal-row{display:flex;gap:12px;align-items:flex-start}
+.meal-meta{flex:1}
+.meal-score{width:84px;text-align:center;padding:8px;border-radius:8px;background:#e6fff4;color:var(--accent);font-weight:700}
+
+/* small foot */
+.foot{text-align:center;margin-top:12px;color:var(--muted);font-size:13px}
+
+/* responsive */
+@media (min-width:700px){
+  .form-grid{grid-template-columns:1fr 1fr; align-items:center}
+  .form-grid label{grid-column:span 2}
+}

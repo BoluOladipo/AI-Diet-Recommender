@@ -1,0 +1,67 @@
+[
+  {
+    "id": "r001",
+    "title": "Pap with Milk",
+    "ingredients": [
+      { "name": "Pap (Akamu)", "grams": 200 },
+      { "name": "Milk (whole)", "grams": 150 }
+    ],
+    "steps": ["Prepare pap", "Heat milk and mix with pap"]
+  },
+  {
+    "id": "r002",
+    "title": "Boiled Yam with Vegetable Sauce",
+    "ingredients": [
+      { "name": "Boiled Yam", "grams": 250 },
+      { "name": "Vegetable (spinach)", "grams": 80 },
+      { "name": "Tomato stew (avg)", "grams": 60 }
+    ],
+    "steps": ["Boil yam", "Prepare sauce with tomato stew and veggies", "Serve"]
+  },
+  {
+    "id": "r003",
+    "title": "Oatmeal with Banana (simple)",
+    "ingredients": [
+      { "name": "Oatmeal", "grams": 60 },
+      { "name": "Milk (whole)", "grams": 150 }
+    ],
+    "steps": ["Cook oatmeal with milk", "Add banana if available"]
+  },
+  {
+    "id": "r004",
+    "title": "Beans Pottage (Boiled Beans)",
+    "ingredients": [
+      { "name": "Beans (boiled)", "grams": 200 },
+      { "name": "Tomato stew (avg)", "grams": 50 }
+    ],
+    "steps": ["Boil beans until soft", "Add stew and simmer"]
+  },
+  {
+    "id": "r005",
+    "title": "Grilled Chicken with Vegetables",
+    "ingredients": [
+      { "name": "Chicken (grilled)", "grams": 150 },
+      { "name": "Vegetable (spinach)", "grams": 100 }
+    ],
+    "steps": ["Grill chicken", "Serve with steamed vegetables"]
+  },
+  {
+    "id": "r006",
+    "title": "White Rice and Fish (light stew)",
+    "ingredients": [
+      { "name": "White Rice (cooked)", "grams": 200 },
+      { "name": "Fish (tilapia, cooked)", "grams": 100 },
+      { "name": "Tomato stew (avg)", "grams": 50 }
+    ],
+    "steps": ["Cook rice", "Prepare fish stew and serve together"]
+  },
+  {
+    "id": "r007",
+    "title": "Eba with Egusi Soup (common)",
+    "ingredients": [
+      { "name": "Eba (Garri)", "grams": 200 },
+      { "name": "Egusi soup (avg)", "grams": 150 }
+    ],
+    "steps": ["Prepare eba", "Serve with egusi soup"]
+  }
+]
