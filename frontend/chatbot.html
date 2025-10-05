@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Chatbot</title>
  <style>
-    /* ========== MODERN AI CHATBOT UI (FULLY RESPONSIVE) ========== */
+ /* ========= FINAL ULTRA RESPONSIVE CHATBOT UI ========= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -22,18 +22,17 @@ html, body {
 
 /* WRAPPER */
 .chat-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  width: 100%;
-  height: 100dvh; /* ✅ fixes mobile height on iOS/Android */
+  height: 100dvh;
   max-width: 900px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  border-radius: 0;
+  backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
+  overflow: hidden;
 }
 
 /* HEADER */
@@ -52,12 +51,21 @@ html, body {
 #chatWindow {
   flex: 1;
   overflow-y: auto;
-  padding: 18px 14px;
+  padding: 18px 14px 90px; /* bottom padding so text box never covers it */
   display: flex;
   flex-direction: column;
   gap: 14px;
   scroll-behavior: smooth;
   overscroll-behavior: contain;
+}
+
+/* SCROLLBAR STYLE */
+#chatWindow::-webkit-scrollbar {
+  width: 6px;
+}
+#chatWindow::-webkit-scrollbar-thumb {
+  background: #ff7a00;
+  border-radius: 10px;
 }
 
 /* BUBBLES */
@@ -88,14 +96,20 @@ html, body {
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* INPUT AREA */
+/* INPUT AREA (FIXED AT BOTTOM) */
 #chatForm {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 900px;
   display: flex;
   align-items: center;
   padding: 10px 12px;
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  flex-shrink: 0;
   gap: 8px;
 }
 
@@ -143,17 +157,8 @@ button:hover {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ======= RESPONSIVE OPTIMIZATION ======= */
+/* ======= RESPONSIVE FIXES ======= */
 @media (max-width: 768px) {
-  .chat-wrapper {
-    height: 100dvh;
-    border-radius: 0;
-  }
-
-  #chatWindow {
-    padding: 14px 10px;
-  }
-
   #chatInput {
     font-size: 14px;
     padding: 10px 14px;
@@ -165,11 +170,23 @@ button:hover {
 }
 
 @supports (-webkit-touch-callout: none) {
-  /* ✅ fix for iOS Safari keyboard push issue */
+  /* ✅ Fix iOS Safari keyboard push issue */
   .chat-wrapper {
     height: -webkit-fill-available;
   }
 }
+/* Loading bubble animation */
+.loading {
+  font-style: italic;
+  color: #bbb;
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
 
  </style>
 </head>
@@ -186,3 +203,4 @@ button:hover {
   <script src="chatbot.js"></script>
 </body>
 </html>
+
