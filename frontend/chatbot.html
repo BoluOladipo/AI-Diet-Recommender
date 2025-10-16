@@ -95,21 +95,7 @@ html, body {
   border-bottom-left-radius: 6px;
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
-input[type="text"],
-select,
-textarea {
-  border: 1px solid #000; /* black border */
-  border-radius: 6px; /* optional – smooth corners */
-  padding: 10px;
-  outline: none; /* remove blue highlight on click */
-}
 
-input[type="text"]:focus,
-select:focus,
-textarea:focus {
-  border: 1px solid #000; /* keep border black on focus */
-  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2); /* optional subtle glow */
-}
 
 /* INPUT AREA (FIXED AT BOTTOM) */
 #chatForm {
@@ -132,7 +118,7 @@ textarea:focus {
   flex: 1;
   padding: 12px 16px;
   border-radius: 25px;
-  border: none;
+  border: 3px solid #000; /* black border */
   outline: none;
   font-size: 15px;
   color: #107C5E;
@@ -218,6 +204,7 @@ button:hover {
   <script src="chatbot.js"></script>
 </body>
 </html>
+
 
 
 
