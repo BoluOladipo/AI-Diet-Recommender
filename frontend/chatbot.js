@@ -23,12 +23,11 @@ chatForm.addEventListener("submit", async (e) => {
   chatWindow.appendChild(loadingBubble);
   chatWindow.scrollTop = chatWindow.scrollHeight;
 
-  // Send to backend
   try {
     const res = await fetch("https://ai-diet-recommender-1hsu.onrender.com/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message: userMsg, history: chatHistory })
+      body: JSON.stringify({ message: userMsg, history: chatHistory }),
     });
 
     const data = await res.json();
@@ -42,6 +41,7 @@ chatForm.addEventListener("submit", async (e) => {
     chatHistory.push({ role: "user", content: userMsg });
     chatHistory.push({ role: "assistant", content: data.reply });
 
+    // ✅ Auto-scroll to the bottom when new message appears
     chatWindow.scrollTop = chatWindow.scrollHeight;
   } catch (err) {
     loadingBubble.remove();
@@ -52,4 +52,7 @@ chatForm.addEventListener("submit", async (e) => {
   }
 });
 
-
+// ✅ Keeps scroll stable when window resizes (like on keyboard open)
+window.addEventListener("resize", () => {
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+});
