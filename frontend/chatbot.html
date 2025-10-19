@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Chatbot</title>
- <style>
-
-* {
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BoluGPT</title>
+  <style>
+    * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -15,13 +14,9 @@
 html, body {
   height: 100%;
   font-family: "Poppins", sans-serif;
- background: linear-gradient(
-    135deg,
-    #F9FFFB 45%,      
-    #DFF5E8 55%
-  );
-  color:#E9F9F0;
-  overflow: hidden;
+  background: linear-gradient(135deg, #F9FFFB 45%, #DFF5E8 55%);
+  color: #E9F9F0;
+  overflow: hidden; /* ✅ Keep page fixed, scroll only chatWindow */
 }
 
 /* WRAPPER */
@@ -29,21 +24,21 @@ html, body {
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  height: 100vh; /* Full screen height */
   max-width: 900px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 20px rgba(255, 102, 0, 0.2);
-  overflow: hidden;
+  overflow: hidden; /* Keep content inside wrapper */
 }
 
 /* HEADER */
 .chat-header {
   text-align: center;
   padding: 18px;
-  background:#107C5E;
+  background: #107C5E;
   color: #E9F9F0;
   font-size: 18px;
   font-weight: 600;
@@ -54,8 +49,8 @@ html, body {
 /* CHAT WINDOW */
 #chatWindow {
   flex: 1;
-  overflow-y: auto;
-  padding: 18px 14px 90px; /* bottom padding so text box never covers it */
+  overflow-y: auto; /* ✅ Enables scrolling inside chat */
+  padding: 18px 14px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -63,7 +58,7 @@ html, body {
   overscroll-behavior: contain;
 }
 
-/* SCROLLBAR STYLE */
+/* Scrollbar styling */
 #chatWindow::-webkit-scrollbar {
   width: 6px;
 }
@@ -72,7 +67,7 @@ html, body {
   border-radius: 10px;
 }
 
-/* BUBBLES */
+/* CHAT BUBBLES */
 .user-bubble,
 .bot-bubble {
   max-width: 80%;
@@ -86,7 +81,7 @@ html, body {
 
 .user-bubble {
   align-self: flex-end;
-  background:#107C5E;
+  background: #107C5E;
   color: #fff;
   border-bottom-right-radius: 6px;
   box-shadow: 0 4px 10px rgba(255, 102, 0, 0.4);
@@ -100,15 +95,9 @@ html, body {
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-
-/* INPUT AREA (FIXED AT BOTTOM) */
+/* INPUT AREA */
 #chatForm {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  max-width: 900px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   padding: 10px 12px;
@@ -122,7 +111,7 @@ html, body {
   flex: 1;
   padding: 12px 16px;
   border-radius: 25px;
-  border: 3px solid #000; /* black border */
+  border: 3px solid #000;
   outline: none;
   font-size: 15px;
   color: #107C5E;
@@ -141,9 +130,9 @@ html, body {
 /* SEND BUTTON */
 button {
   padding: 12px 20px;
- border: 2px solid #000; /* black border */
+  border: 2px solid #000;
   border-radius: 25px;
-  background:#107C5E;
+  background: #107C5E;
   color: #E9F9F0;
   font-weight: 600;
   cursor: pointer;
@@ -158,11 +147,33 @@ button:hover {
 
 /* ANIMATIONS */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ======= RESPONSIVE FIXES ======= */
+/* LOADING BUBBLE */
+.loading {
+  font-style: italic;
+  color: #bbb;
+  animation: blink 1.5s infinite ease-in-out;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
   #chatInput {
     font-size: 14px;
@@ -174,57 +185,30 @@ button:hover {
   }
 }
 
+/* ✅ Mobile Safari keyboard fix */
 @supports (-webkit-touch-callout: none) {
-  /* ✅ Fix iOS Safari keyboard push issue */
   .chat-wrapper {
     height: -webkit-fill-available;
   }
 }
-/* Loading bubble animation */
-.loading {
-  font-style: italic;
-  color: #bbb;
-  animation: blink 1.5s infinite ease-in-out;
-}
 
-@keyframes blink {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-
- </style>
+  </style>
 </head>
+
 <body>
   <div class="chat-wrapper">
-    <div class="chat-header">🤖  BoluGPT</div>
+    <div class="chat-header">🤖 BoluGPT</div>
+
+    <!-- Scrollable chat area -->
     <div id="chatWindow"></div>
+
+    <!-- Input area -->
     <form id="chatForm">
       <input id="chatInput" type="text" placeholder="Ask me anything..." />
       <button type="submit">Send</button>
     </form>
   </div>
-
-  <script src="chatbot.js"></script>
+<script src="chatbot.js"></script>
+  
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
