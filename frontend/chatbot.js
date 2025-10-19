@@ -9,7 +9,7 @@ chatForm.addEventListener("submit", async (e) => {
   const userMsg = chatInput.value.trim();
   if (!userMsg) return;
 
-  // Display user message
+  // Show user message
   const userBubble = document.createElement("div");
   userBubble.className = "user-bubble";
   userBubble.textContent = userMsg;
@@ -41,7 +41,6 @@ chatForm.addEventListener("submit", async (e) => {
     chatHistory.push({ role: "user", content: userMsg });
     chatHistory.push({ role: "assistant", content: data.reply });
 
-    // ✅ Auto-scroll to the bottom when new message appears
     chatWindow.scrollTop = chatWindow.scrollHeight;
   } catch (err) {
     loadingBubble.remove();
@@ -52,7 +51,7 @@ chatForm.addEventListener("submit", async (e) => {
   }
 });
 
-// ✅ Keeps scroll stable when window resizes (like on keyboard open)
+// Handle screen resize (mobile keyboard)
 window.addEventListener("resize", () => {
   chatWindow.scrollTop = chatWindow.scrollHeight;
 });
